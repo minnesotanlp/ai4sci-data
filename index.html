@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI4Science · Scientific Workflow Data Collection</title>
+<meta name="description" content="Open datasets of how real science gets done — recruiting participants and collaborators across Chemistry, Biology, Aerospace, Civil, and Materials Science.">
+<style>
+  :root {
+    --ink:    #191B16;   /* near-black, borders + text */
+    --paper:  #FFFFFF;
+    --panel:  #F2F2F2;   /* light-gray panels */
+    --slate:  #404040;   /* dark band */
+    --blue:   #809EC2;   /* accent — computational */
+    --blue-l: #404F61;
+    --sage:   #A5B592;   /* accent — physical lab */
+    --muted:  #5b5e57;
+    --sans:   "Segoe UI", "Selawik", "Helvetica Neue", Arial, sans-serif;
+    --light:  "Segoe UI Light", "Segoe UI", "Selawik", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--blue-l); }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Hero ---------- */
+  header.hero { padding: 56px 0 24px; }
+  .eyebrow {
+    font-family: var(--light); font-weight: 300;
+    letter-spacing: .22em; text-transform: uppercase;
+    font-size: 13px; color: var(--muted); margin: 0 0 14px;
+  }
+  .hero-panel {
+    background: var(--panel);
+    border: 2px solid var(--ink);
+    border-radius: 36px;
+    padding: 44px 48px;
+  }
+  .hero-panel h1 {
+    margin: 0 0 18px;
+    font-size: clamp(28px, 4.2vw, 46px);
+    line-height: 1.12; font-weight: 700;
+  }
+  .hero-panel h1 .accent { color: var(--blue-l); }
+  .hero-panel p.lede {
+    margin: 0; font-size: clamp(17px, 1.8vw, 21px);
+    max-width: 70ch; color: #2a2c26;
+  }
+  .hero-meta {
+    margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px 22px;
+    font-size: 15px; color: var(--muted);
+  }
+  .hero-meta b { color: var(--ink); font-weight: 600; }
+
+  /* dark recruiting banner, mirrors the flyer banner */
+  .banner {
+    background: var(--slate); color: #fff;
+    border-radius: 12px;
+    margin: 22px 0 6px;
+    padding: 16px 26px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px;
+    font-size: 18px;
+  }
+  .banner strong { font-weight: 700; }
+  .banner .depts { color: #d7dccb; font-family: var(--light); font-weight: 300; }
+
+  /* ---------- Section scaffolding ---------- */
+  section { padding: 40px 0; }
+  .section-head { margin: 0 0 6px; }
+  .section-head h2 {
+    font-size: clamp(22px, 2.6vw, 30px); font-weight: 700; margin: 0 0 8px;
+  }
+  .section-head p { margin: 0; color: var(--muted); max-width: 78ch; font-size: 17px; }
+
+  /* spectrum strip */
+  .spectrum {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    margin-top: 26px;
+  }
+  .spectrum .seg {
+    border: 2px solid var(--ink); border-radius: 14px;
+    padding: 16px 18px; background: var(--paper);
+  }
+  .spectrum .seg .h { font-weight: 700; font-size: 15px; }
+  .spectrum .seg .s { color: var(--muted); font-size: 14px; }
+  .spectrum .seg .s a { color: var(--ink); font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--blue); }
+  .spectrum .seg .s a:hover { background: var(--blue); }
+  .spectrum .seg .bar { height: 8px; border-radius: 6px; margin: 10px 0 4px; }
+
+  /* ---------- Project cards ---------- */
+  .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .card {
+    border: 2px solid var(--ink); border-radius: 22px;
+    background: var(--paper); overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .card .accent-bar { height: 10px; }
+  .card .body { padding: 22px 22px 24px; display: flex; flex-direction: column; flex: 1; }
+
+  .badge-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+  .badge {
+    font-size: 12px; font-weight: 700; letter-spacing: .04em;
+    padding: 4px 11px; border-radius: 999px; border: 1.5px solid var(--ink);
+  }
+  .badge.live { background: var(--sage); }
+  .badge.soon { background: #fff; color: var(--muted); border-style: dashed; }
+  .horizon {
+    font-size: 12px; color: var(--muted); font-family: var(--light); font-weight: 300;
+    margin-left: auto;
+  }
+
+  .card h3 { margin: 0 0 2px; font-size: 22px; font-weight: 700; }
+  .card .lead { margin: 0 0 14px; font-size: 14px; color: var(--muted); }
+  .card .lead b { color: var(--ink); font-weight: 600; }
+  .card .pitch { margin: 0 0 18px; font-size: 15.5px; }
+  .card { scroll-margin-top: 18px; }
+  .card:target { box-shadow: 0 0 0 4px var(--blue); }
+
+  .contact-line {
+    margin: 0 0 12px; font-size: 13.5px; color: var(--muted);
+    display: flex; align-items: center; gap: 7px;
+  }
+  .contact-line a {
+    font-weight: 600; color: var(--ink); text-decoration: none;
+    border-bottom: 2px solid var(--blue);
+  }
+  .contact-line a:hover { background: var(--blue); }
+  .card.sage .contact-line a { border-bottom-color: var(--sage); }
+  .card.sage .contact-line a:hover { background: var(--sage); }
+
+  .facts { list-style: none; margin: 0 0 18px; padding: 0; font-size: 14px; }
+  .facts li { display: flex; gap: 10px; padding: 6px 0; border-top: 1px solid #e3e3df; }
+  .facts li:first-child { border-top: 0; }
+  .facts .k { flex: 0 0 86px; color: var(--muted); font-family: var(--light); font-weight: 300; }
+  .facts .v { flex: 1; }
+
+  /* 3-step mini flow, mirrors flyer step cards */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin: 0 0 18px; }
+  .steps .step {
+    background: var(--blue); border: 1px solid var(--blue-l);
+    border-radius: 8px; padding: 9px 8px; font-size: 11.5px; line-height: 1.3; text-align: center;
+  }
+  .steps .step b { display: block; font-size: 12.5px; }
+  .card.sage .steps .step { background: var(--sage); border-color: #6f7d5c; }
+
+  .spacer { flex: 1; }
+
+  /* flyer live preview */
+  .flyer-preview {
+    position: relative; width: 100%; aspect-ratio: 16 / 9;
+    border: 2px solid var(--ink); border-radius: 12px; overflow: hidden;
+    background: var(--panel); margin-top: 4px;
+  }
+  .flyer-frame {
+    position: absolute; top: 0; left: 0; width: 1280px; height: 720px;
+    transform-origin: top left; border: 0; pointer-events: none;
+  }
+  .flyer-open {
+    position: absolute; right: 8px; bottom: 8px;
+    background: var(--ink); color: #fff; text-decoration: none;
+    font-size: 12px; font-weight: 600; padding: 6px 11px; border-radius: 7px;
+    border: 1px solid var(--ink);
+  }
+  .flyer-open:hover { background: #000; }
+
+  /* document-style block for the pending project */
+  .doc {
+    border: 2px dashed var(--ink); border-radius: 12px;
+    background: var(--panel); padding: 16px 18px; margin-top: 4px; font-size: 13.5px;
+  }
+  .doc .doc-title { font-weight: 700; margin-bottom: 8px; display: flex; gap: 8px; align-items: baseline; }
+  .doc .doc-title .tag { font-family: var(--light); font-weight: 300; color: var(--muted); font-size: 12px; }
+  .doc ul { margin: 0 0 10px; padding-left: 18px; }
+  .doc li { margin: 3px 0; }
+  .doc .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .doc .links a {
+    font-size: 12px; font-weight: 600; text-decoration: none;
+    border: 1.5px solid var(--ink); border-radius: 7px; padding: 5px 10px; color: var(--ink);
+    background: #fff;
+  }
+  .doc .links a:hover { background: var(--blue); }
+
+  /* ---------- Participate ---------- */
+  .participate {
+    background: var(--panel); border: 2px solid var(--ink); border-radius: 28px;
+    padding: 40px 44px;
+  }
+  .participate h2 { margin: 0 0 22px; font-size: clamp(22px, 2.6vw, 30px); }
+  .roles { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .role { background: #fff; border: 2px solid var(--ink); border-radius: 16px; padding: 22px 24px; }
+  .role h3 { margin: 0 0 8px; font-size: 19px; }
+  .role p { margin: 0 0 12px; font-size: 15px; color: #2a2c26; }
+  .role .who { font-family: var(--light); font-weight: 300; color: var(--muted); font-size: 13px; }
+  .coauthor {
+    margin-top: 22px; background: var(--sage); border: 2px solid var(--ink);
+    border-radius: 14px; padding: 16px 22px; font-style: italic; font-size: 16px;
+  }
+  .portfolio-note { margin: 18px 0 0; font-size: 15px; color: #2a2c26; max-width: 80ch; }
+  .portfolio-note a { font-weight: 700; }
+  .cta-row { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .cta {
+    display: inline-block; text-decoration: none; font-weight: 700; font-size: 15px;
+    padding: 13px 22px; border-radius: 10px; border: 2px solid var(--ink);
+  }
+  .cta.primary { background: var(--ink); color: #fff; }
+  .cta.primary:hover { background: #000; }
+  .cta.ghost { background: #fff; color: var(--ink); }
+  .cta.ghost:hover { background: var(--blue); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 2px solid var(--ink); margin-top: 32px;
+    padding: 28px 0 56px; color: var(--muted); font-size: 14px;
+  }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: space-between; }
+  footer a { color: var(--blue-l); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 920px) {
+    .projects { grid-template-columns: 1fr; max-width: 540px; margin: 0 auto; }
+    .spectrum { grid-template-columns: 1fr; }
+    .roles { grid-template-columns: 1fr; }
+    .hero-panel { padding: 32px 26px; }
+    .participate { padding: 30px 24px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Minnesota NLP Lab · University of Minnesota</p>
+      <div class="hero-panel">
+        <h1>How does real science <span class="accent">actually get done?</span><br>Help us record it.</h1>
+        <p class="lede">
+          We are building open datasets of scientific work — from single computational
+          tasks to entire multi-month research projects — so that AI agents can learn to
+          understand, assist, and eventually carry out research. Three complementary efforts
+          are recruiting participants and collaborators right now.
+        </p>
+        <div class="hero-meta">
+          <span><b>Across UMN:</b> Chemistry · Biology · Medicine · Aerospace · Civil &amp; Environmental · Materials Science · Electrical &amp; Computer Eng. · Robotics · &amp; more</span>
+          <span><b>3 time horizons:</b> tasks → sessions → projects</span>
+          <span><b>Open data,</b> co-authorship for contributing labs</span>
+        </div>
+      </div>
+
+      <div class="banner">
+        <strong>Now recruiting</strong>
+        <span class="depts">graduate students, lab members, and PIs across departments — refer an interested colleague or contribute your own lab's work.</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== SPECTRUM ===================== -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>One question, three scales of data</h2>
+        <p>
+          Each project captures scientific work at a different granularity. Together they span
+          the full arc of research — what a scientist does in an hour, and what unfolds over half a year.
+          They share a participant pool and recording infrastructure across departments.
+        </p>
+      </div>
+      <div class="spectrum">
+        <div class="seg">
+          <div class="bar" style="background:var(--blue)"></div>
+          <div class="h">Short · computational</div>
+          <div class="s">1–2 hour simulation &amp; analysis tasks → <a href="#sciharbor">SciHarbor</a></div>
+        </div>
+        <div class="seg">
+          <div class="bar" style="background:var(--sage)"></div>
+          <div class="h">Short · hands-on</div>
+          <div class="s">1–2 hour physical lab sessions → <a href="#lab-workflows">Lab Workflows</a></div>
+        </div>
+        <div class="seg">
+          <div class="bar" style="background:var(--slate)"></div>
+          <div class="h">Long · longitudinal</div>
+          <div class="s">6–12 month full research projects → <a href="#research-workflow">ResearchWorkflow</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECTS ===================== -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The three projects</h2>
+        <p>Click any flyer to open it full-size. Pick the one that matches how your lab works.</p>
+      </div>
+
+      <div class="projects">
+
+        <!-- ---------- SciHarbor (Young-Jun) — pending flyer ---------- -->
+        <article class="card" id="sciharbor">
+          <div class="accent-bar" style="background:var(--blue)"></div>
+          <div class="body">
+            <div class="badge-row">
+              <span class="badge soon">Flyer coming soon</span>
+              <span class="horizon">1–2 hr / task</span>
+            </div>
+            <h3>SciHarbor</h3>
+            <p class="lead">Lead: <b>Young-Jun Lee</b> · computational &amp; simulation tasks</p>
+            <p class="pitch">
+              If your lab works with simulators or computational tools: contribute well-specified
+              scientific tasks that become a public benchmark for AI agents on real scientific software.
+            </p>
+            <ul class="facts">
+              <li><span class="k">Captures</span><span class="v">Task spec, expected outcome, evaluation metrics</span></li>
+              <li><span class="k">Method</span><span class="v">Interview + structured task submission (YAML manifest)</span></li>
+              <li><span class="k">Becomes</span><span class="v">Sci-MCP server + evaluation harness + live leaderboard</span></li>
+              <li><span class="k">Phase&nbsp;2</span><span class="v">Physical workflows once robotic arms are installed</span></li>
+            </ul>
+
+            <p class="contact-line">Contact: <a href="mailto:passing2961@gmail.com?subject=SciHarbor%20%E2%80%94%20interested">Young-Jun Lee ↗</a></p>
+
+            <div class="spacer"></div>
+
+            <div class="doc">
+              <div class="doc-title">SciHarbor — Project Brief <span class="tag">flyer in progress</span></div>
+              <ul>
+                <li>A benchmark platform evaluating AI agents on <b>real scientific simulators</b> — OpenFOAM, GROMACS, AlphaFold, Ansys, SAP2000, OpenRocket, and more.</li>
+                <li><b>300+ tasks</b> in Phase 1; each participating lab contributes ~20 expert-validated tasks and owns the ground truth.</li>
+                <li>TerminalBench-style <b>public leaderboard</b>, MIT-licensed, results and traces open by default.</li>
+                <li>Supported by the <b>Laude Slingshot Grant 2026</b>.</li>
+              </ul>
+              <div class="links">
+                <a href="https://github.com/minnesotanlp/sciharbor" target="_blank" rel="noopener">GitHub ↗</a>
+                <a href="mailto:passing2961@gmail.com?subject=SciHarbor%20task%20contribution">Contribute tasks ↗</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- Lab Workflows (Karin) — flyer ---------- -->
+        <article class="card sage" id="lab-workflows">
+          <div class="accent-bar" style="background:var(--sage)"></div>
+          <div class="body">
+            <div class="badge-row">
+              <span class="badge live">Flyer ready</span>
+              <span class="horizon">1–2 hr / session</span>
+            </div>
+            <h3>Lab Workflows</h3>
+            <p class="lead">Lead: <b>Karin de Langis</b> · hands-on lab video</p>
+            <p class="pitch">
+              If your lab is running physical experiments: record short lab sessions with a
+              head-mounted camera and think-aloud narration so models can learn the goals behind each action.
+            </p>
+            <ul class="facts">
+              <li><span class="k">Captures</span><span class="v">Head-mounted video + think-aloud, annotated intents</span></li>
+              <li><span class="k">Method</span><span class="v">Wear a camera, record, narrate your work</span></li>
+              <li><span class="k">Becomes</span><span class="v">Benchmark of how actions connect to scientific goals</span></li>
+              <li><span class="k">Commitment</span><span class="v">~3 hours total, across three steps</span></li>
+            </ul>
+
+            <div class="steps">
+              <div class="step"><b>1 · Interview</b>30m · orient &amp; schedule</div>
+              <div class="step"><b>2 · Record</b>2hr · two ~1-hr sessions</div>
+              <div class="step"><b>3 · Reflect</b>30m · actions &amp; intent</div>
+            </div>
+
+            <p class="contact-line">Contact: <a href="mailto:dento019@umn.edu?subject=Lab%20Workflows%20study%20%E2%80%94%20interested">Karin de Langis ↗</a></p>
+
+            <div class="spacer"></div>
+
+            <div class="flyer-preview">
+              <iframe class="flyer-frame" src="flyers/lab-workflows-karin.html" title="Lab Workflows recruitment flyer" scrolling="no" loading="lazy"></iframe>
+              <a class="flyer-open" href="flyers/lab-workflows-karin.html" target="_blank" rel="noopener">Open full flyer ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- ResearchWorkflow (Chi) — flyer ---------- -->
+        <article class="card" id="research-workflow">
+          <div class="accent-bar" style="background:var(--slate)"></div>
+          <div class="body">
+            <div class="badge-row">
+              <span class="badge live">Flyer ready</span>
+              <span class="horizon">6–12 months</span>
+            </div>
+            <h3>ResearchWorkflow</h3>
+            <p class="lead">Lead: <b>Khanh Chi Le</b> · longitudinal research process</p>
+            <p class="pitch">
+              If you are running a long-term research project in digital tools: let us record how a
+              project unfolds from inception to publication, to inform the next generation of AI research assistants.
+            </p>
+            <ul class="facts">
+              <li><span class="k">Captures</span><span class="v">Keystrokes, screen video, meeting notes, documents</span></li>
+              <li><span class="k">Method</span><span class="v">Auto-recording app + voluntary artifact submission</span></li>
+              <li><span class="k">Becomes</span><span class="v">Longitudinal dataset of how research actually unfolds</span></li>
+              <li><span class="k">Commitment</span><span class="v">Light setup, then passive over the project</span></li>
+            </ul>
+
+            <div class="steps">
+              <div class="step"><b>1 · Onboard</b>1hr · connect tools</div>
+              <div class="step"><b>2 · Collect</b>12mo · auto-record</div>
+              <div class="step"><b>3 · Reflect</b>3×1hr · decisions</div>
+            </div>
+
+            <p class="contact-line">Contact: <a href="mailto:le000422@umn.edu?subject=ResearchWorkflow%20study%20%E2%80%94%20interested">Khanh Chi Le ↗</a></p>
+
+            <div class="spacer"></div>
+
+            <div class="flyer-preview">
+              <iframe class="flyer-frame" src="flyers/research-workflow-chi.html" title="ResearchWorkflow recruitment flyer" scrolling="no" loading="lazy"></iframe>
+              <a class="flyer-open" href="flyers/research-workflow-chi.html" target="_blank" rel="noopener">Open full flyer ↗</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PARTICIPATE ===================== -->
+  <section>
+    <div class="wrap">
+      <div class="participate">
+        <h2>How to get involved</h2>
+        <div class="roles">
+          <div class="role">
+            <h3>Participate</h3>
+            <p>Contribute your own scientific work — a couple of hours of lab recording, a
+            set of computational tasks, or passive recording of a project you're already running.
+            We handle setup, scheduling, and equipment.</p>
+            <p class="who">For graduate students &amp; lab members</p>
+          </div>
+          <div class="role">
+            <h3>Collaborate</h3>
+            <p>Bring your lab into one or more of the projects. PIs help define what "correct"
+            looks like in their domain and open the door for their students to participate.</p>
+            <p class="who">For PIs &amp; research groups across departments</p>
+          </div>
+        </div>
+
+        <div class="coauthor">
+          Co-authorship and contribution opportunities are available for participating PIs and lab members across all three projects.
+        </div>
+
+        <p class="portfolio-note">
+          This initiative — and the team behind it — is featured in the
+          <a href="https://dykang.github.io/project.html" target="_blank" rel="noopener">Minnesota NLP Lab project portfolio</a>,
+          alongside our other work on expert workflows in science, law, education, and journalism.
+        </p>
+
+        <div class="cta-row">
+          <a class="cta primary" href="mailto:dongyeop@umn.edu?subject=AI4Science%20data%20collection%20%E2%80%94%20interested">Express interest →</a>
+          <a class="cta ghost" href="https://dykang.github.io/project.html" target="_blank" rel="noopener">Project portfolio ↗</a>
+          <a class="cta ghost" href="https://minnesotanlp.github.io" target="_blank" rel="noopener">Minnesota NLP Lab ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="wrap">
+      <span>AI4Science Scientific Workflow Data Collection · Minnesota NLP Lab, University of Minnesota</span>
+      <span><a href="https://dykang.github.io/project.html" target="_blank" rel="noopener">Project portfolio</a> · Contact: <a href="mailto:dongyeop@umn.edu">dongyeop@umn.edu</a> · PI: Dongyeop Kang</span>
+    </div>
+  </footer>
+
+  <script>
+    // Scale each flyer (designed at 1280×720) to fit its preview box, responsively.
+    function fitFlyers() {
+      document.querySelectorAll('.flyer-preview').forEach(function (box) {
+        var frame = box.querySelector('.flyer-frame');
+        if (!frame) return;
+        frame.style.transform = 'scale(' + (box.clientWidth / 1280) + ')';
+      });
+    }
+    window.addEventListener('load', fitFlyers);
+    window.addEventListener('resize', fitFlyers);
+    fitFlyers();
+  </script>
+
+</body>
+</html>
