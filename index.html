@@ -117,12 +117,12 @@
   }
   .collect .lbl { margin-right: 10px; }
 
-  .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0 0 24px; }
-  .stepc { border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 12px; background: var(--card); padding: 18px 20px 20px; }
-  .stepc .ic { width: 30px; height: 30px; margin-bottom: 12px; }
+  .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0 0 22px; }
+  .stepc { position: relative; min-height: 150px; border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 12px; background: var(--card); padding: 18px 20px 20px; }
+  .stepc .ic { position: absolute; top: 16px; right: 16px; width: 52px; height: 52px; opacity: .95; }
   .stepc .ic svg { width: 100%; height: 100%; fill: var(--accent); }
-  .stepc .n { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
-  .stepc .t { font-weight: 600; font-size: 18px; margin: 5px 0 7px; }
+  .stepc .n { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); padding-right: 62px; }
+  .stepc .t { font-weight: 600; font-size: 18px; margin: 5px 0 7px; padding-right: 62px; }
   .stepc .d { font-size: 14.5px; color: var(--mute); line-height: 1.5; }
 
   .outcome {
@@ -133,6 +133,24 @@
   .outcome .lbl { display: block; margin-bottom: 5px; }
   .outcome b { color: var(--espresso); font-weight: 600; }
   .phase2 { margin: 0 0 18px; font-size: 14.5px; font-style: italic; color: var(--mute); }
+
+  .comp {
+    display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;
+    background: var(--accent); color: #fff; border-radius: 999px; padding: 9px 18px;
+    margin: 0 0 22px; font-size: 15.5px;
+  }
+  .comp .lbl { color: rgba(255,255,255,.82); }
+  .comp b { font-weight: 600; }
+  .comp .sub { color: rgba(255,255,255,.85); font-size: 13.5px; font-style: italic; }
+
+  .related { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; margin: 0 0 20px; font-size: 15px; color: var(--brown); max-width: 88ch; }
+  .related .lbl { color: var(--accent); }
+  .related a {
+    font-family: var(--sans); font-size: 13px; font-weight: 600; text-decoration: none;
+    border: 1.5px solid var(--line); border-radius: 8px; padding: 6px 11px; color: var(--espresso); background: var(--card);
+  }
+  .related a:hover { border-color: var(--accent); color: var(--accent); }
+  .related .muted { color: var(--mute); font-style: italic; font-size: 13.5px; }
 
   .proj-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
   .contact-inline { margin: 0; font-size: 15px; }
@@ -281,11 +299,12 @@
             <div class="d">We run agents against your tasks and post results to a public leaderboard.</div>
           </div>
         </div>
-        <p class="outcome"><span class="lbl">Produces</span>SciHarbor — a benchmark evaluating AI agents on real simulators (OpenFOAM, GROMACS, AlphaFold, Ansys, SAP2000, OpenRocket…). <b>300+ tasks</b> in Phase 1, MIT-licensed, with an open TerminalBench-style leaderboard. Supported by the <b>Laude Slingshot Grant 2026</b>.</p>
+        <div class="comp"><span class="lbl">Co-authorship</span><b>All participants are invited as co-authors</b></div>
+        <p class="outcome"><span class="lbl">Produces</span>SciHarbor — a benchmark evaluating AI agents on real simulators (OpenFOAM, GROMACS, AlphaFold, Ansys, SAP2000, OpenRocket…). <b>300+ tasks</b> in Phase 1, MIT-licensed, with an open leaderboard.</p>
+        <div class="related"><span class="lbl">Related work</span><span>Follows the Terminal-Bench style of agentic benchmark and live leaderboard.</span><a href="https://www.tbench.ai/" target="_blank" rel="noopener">Terminal-Bench ↗</a></div>
         <p class="phase2">Phase 2 extends to physical workflows once robotic arms are installed.</p>
         <div class="proj-foot">
           <p class="contact-inline">Contact: <a href="mailto:passing2961@gmail.com?subject=SciHarbor%20%E2%80%94%20interested">Young-Jun Lee ↗</a></p>
-          <div class="links"><a href="https://github.com/minnesotanlp/sciharbor" target="_blank" rel="noopener">GitHub ↗</a></div>
         </div>
       </article>
 
@@ -315,7 +334,9 @@
             <div class="d">Interview about actions, intentions, and goals.</div>
           </div>
         </div>
+        <div class="comp"><span class="lbl">Compensation</span><b>$150 per participant</b><span class="sub">up to $50 / hour</span></div>
         <p class="outcome"><span class="lbl">Produces</span>A dataset of hands-on lab workflows for benchmarking how well AI connects actions to scientific goals and intentions.</p>
+        <div class="related"><span class="lbl">Related work</span><span>Builds on SERUM, which extracts behavioral models from egocentric lab video.</span><a href="https://minnesotanlp.github.io/SERUM-web/" target="_blank" rel="noopener">SERUM project ↗</a><a href="https://amir-fluviomarine-nia.ngrok-free.dev/" target="_blank" rel="noopener">Live demo ↗</a><span class="muted">paper under review</span></div>
         <div class="proj-foot">
           <p class="contact-inline">Contact: <a href="mailto:dento019@umn.edu?subject=Lab%20Workflows%20study%20%E2%80%94%20interested">Karin de Langis ↗</a></p>
         </div>
@@ -347,7 +368,9 @@
             <div class="d">Interviews about your research reasoning and decisions.</div>
           </div>
         </div>
+        <div class="comp"><span class="lbl">Compensation</span><b>$150 per team / 4 months</b><span class="sub">up to $600 total</span></div>
         <p class="outcome"><span class="lbl">Produces</span>A longitudinal dataset of how research unfolds — to study how early actions shape later ones, and to build better AI research assistants.</p>
+        <div class="related"><span class="lbl">Related work</span><span>Builds on ScholaWrite, a keystroke dataset of scientific writing.</span><a href="https://minnesotanlp.github.io/scholawrite/" target="_blank" rel="noopener">ScholaWrite project ↗</a><a href="https://arxiv.org/abs/2502.02904v4" target="_blank" rel="noopener">Paper ↗</a></div>
         <div class="proj-foot">
           <p class="contact-inline">Contact: <a href="mailto:le000422@umn.edu?subject=ResearchWorkflow%20study%20%E2%80%94%20interested">Khanh Chi Le ↗</a></p>
         </div>
