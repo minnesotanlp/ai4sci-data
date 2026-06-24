@@ -153,6 +153,12 @@
   .related a:hover { border-color: var(--accent); color: var(--accent); }
   .related .muted { color: var(--mute); font-style: italic; font-size: 13.5px; }
 
+  /* example video per project */
+  .proj-media { margin: 0 0 22px; }
+  .proj-media .lbl { display: block; margin-bottom: 8px; }
+  .proj-media .frame { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #000; }
+  .proj-media iframe, .proj-media video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+
   .proj-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
   .contact-inline { margin: 0; font-size: 15px; }
   .contact-inline a { font-weight: 600; color: var(--espresso); border-bottom: 2px solid var(--accent); text-decoration: none; }
@@ -173,8 +179,6 @@
   .role p { margin: 0 0 12px; font-size: 15.5px; color: var(--brown); }
   .role .who { font-style: italic; color: var(--mute); font-size: 14px; }
   .coauthor { margin-top: 22px; background: var(--olive); color: #fff; border-radius: 12px; padding: 16px 22px; font-style: italic; font-size: 16px; }
-  .portfolio-note { margin: 18px 0 0; font-size: 16px; color: var(--brown); max-width: 82ch; }
-  .portfolio-note a { font-weight: 600; }
   .cta-row { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; }
   .cta { font-family: var(--sans); display: inline-block; text-decoration: none; font-weight: 700; font-size: 15px; padding: 13px 22px; border-radius: 10px; border: 2px solid var(--clay); }
   .cta.primary { background: var(--clay); color: #fff; }
@@ -187,13 +191,12 @@
   .team-sub .confirmed-note { color: var(--mute); font-style: italic; font-weight: 400; font-size: 16px; }
   .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
   .pi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  .person { border: 1px solid var(--line); border-top: 4px solid var(--accent); border-radius: 14px; background: var(--card); padding: 24px 20px 22px; text-align: center; display: flex; flex-direction: column; align-items: center; }
-  .person .avatar { width: 92px; height: 92px; border-radius: 50%; object-fit: cover; object-position: top; display: block; margin: 0 0 14px; border: 3px solid var(--cream); box-shadow: 0 3px 12px -4px rgba(43,32,24,.4); background: var(--cream); }
-  .person .tag { margin-bottom: 10px; display: inline-block; }
+  .person { padding: 6px 8px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .person .avatar { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; object-position: top; display: block; margin: 0 0 13px; border: 3px solid var(--card); box-shadow: 0 3px 12px -4px rgba(43,32,24,.35); background: var(--card); }
+  .person .tag { margin-bottom: 9px; display: inline-block; }
   .person h4 { margin: 0 0 4px; font-size: 18px; font-weight: 600; }
   .person .person-role { margin: 0; color: var(--mute); font-size: 13.5px; font-style: italic; line-height: 1.45; }
-  .person .badge { margin-top: 12px; font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #fff; background: var(--olive); border-radius: 999px; padding: 5px 13px; }
-  .person .person-links { margin-top: 14px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .person .person-links { margin-top: 12px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
   .person .person-links a { font-family: var(--sans); font-size: 12.5px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--accent); color: var(--accent); border-radius: 8px; padding: 5px 12px; background: var(--card); }
   .person .person-links a:hover { background: var(--accent); color: #fff; }
   .pi-more { margin: 22px 0 0; font-size: 15.5px; color: var(--brown); max-width: 86ch; }
@@ -369,9 +372,13 @@
             <div class="d">Interview about actions, intentions, and goals.</div>
           </div>
         </div>
-        <div class="comp"><span class="lbl">Compensation</span><b>$150 per participant</b><span class="sub">up to $50 / hour</span></div>
+        <div class="comp"><span class="lbl">Compensation</span><b>$150 per participant</b><span class="sub">up to $50 / hr · co-authorship for contributing labs</span></div>
         <p class="outcome"><span class="lbl">Produces</span>A dataset of hands-on lab workflows for benchmarking how well AI connects actions to scientific goals and intentions.</p>
         <div class="related"><span class="lbl">Related work</span><span>Builds on SERUM, which extracts behavioral models from egocentric lab video.</span><a href="https://minnesotanlp.github.io/SERUM-web/" target="_blank" rel="noopener">SERUM project ↗</a><a href="https://amir-fluviomarine-nia.ngrok-free.dev/" target="_blank" rel="noopener">Live demo ↗</a><span class="muted">paper under review</span></div>
+        <div class="proj-media">
+          <span class="lbl">Example</span>
+          <div class="frame"><iframe src="https://www.youtube.com/embed/JcmMn-c1LPo" title="Lab Workflows example" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        </div>
         <div class="proj-foot">
           <p class="contact-inline">Contact: <a href="mailto:dento019@umn.edu?subject=Lab%20Workflows%20study%20%E2%80%94%20interested">Karin de Langis ↗</a></p>
         </div>
@@ -406,6 +413,10 @@
         <div class="comp"><span class="lbl">Compensation</span><b>$150 per team / 4 months</b><span class="sub">up to $600 total</span></div>
         <p class="outcome"><span class="lbl">Produces</span>A longitudinal dataset of how research unfolds — to study how early actions shape later ones, and to build better AI research assistants.</p>
         <div class="related"><span class="lbl">Related work</span><span>Builds on ScholaWrite, a keystroke dataset of scientific writing.</span><a href="https://minnesotanlp.github.io/scholawrite/" target="_blank" rel="noopener">ScholaWrite project ↗</a><a href="https://arxiv.org/abs/2502.02904v4" target="_blank" rel="noopener">Paper ↗</a></div>
+        <div class="proj-media">
+          <span class="lbl">Example</span>
+          <div class="frame"><video controls preload="metadata" playsinline><source src="assets/videos/project2_with_intents.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
+        </div>
         <div class="proj-foot">
           <p class="contact-inline">Contact: <a href="mailto:le000422@umn.edu?subject=ResearchWorkflow%20study%20%E2%80%94%20interested">Khanh Chi Le ↗</a></p>
         </div>
@@ -440,15 +451,8 @@
           Co-authorship and contribution opportunities are available for participating PIs and lab members across all three projects.
         </div>
 
-        <p class="portfolio-note">
-          This initiative — and the team behind it — is featured in the
-          <a href="https://dykang.github.io/project.html" target="_blank" rel="noopener">Minnesota NLP Lab project portfolio</a>,
-          alongside our other work on expert workflows in science, law, education, and journalism.
-        </p>
-
         <div class="cta-row">
           <a class="cta primary" href="#contact">Contact a project lead →</a>
-          <a class="cta ghost" href="https://dykang.github.io/project.html" target="_blank" rel="noopener">Project portfolio ↗</a>
           <a class="cta ghost" href="https://minnesotanlp.github.io" target="_blank" rel="noopener">Minnesota NLP Lab ↗</a>
         </div>
       </div>
@@ -505,37 +509,25 @@
         </div>
       </div>
 
-      <h3 class="team-sub">Contributor PIs <span class="confirmed-note">— confirmed collaborating faculty at UMN</span></h3>
+      <h3 class="team-sub">Contributor PIs <span class="confirmed-note">— collaborating faculty across UMN departments</span></h3>
       <div class="pi-grid">
         <div class="person pi" style="--accent: var(--olive)">
           <img class="avatar" src="https://sci-harbor.com/team/jihye-park.jpg" alt="Jihye Park">
           <h4>Jihye Park</h4>
           <p class="person-role">Chemistry · EC-MOFs</p>
-          <span class="badge">✓ Confirmed</span>
-          <div class="person-links">
-            <a href="https://sci-harbor.com/team" target="_blank" rel="noopener">SciHarbor team ↗</a>
-          </div>
         </div>
         <div class="person pi" style="--accent: var(--olive)">
           <img class="avatar" src="https://sci-harbor.com/team/chris-bartel.jpg" alt="Chris Bartel">
           <h4>Chris Bartel</h4>
           <p class="person-role">Materials Science · DMC Lab</p>
-          <span class="badge">✓ Confirmed</span>
-          <div class="person-links">
-            <a href="https://sci-harbor.com/team" target="_blank" rel="noopener">SciHarbor team ↗</a>
-          </div>
         </div>
         <div class="person pi" style="--accent: var(--olive)">
           <img class="avatar" src="https://sci-harbor.com/team/seung-hwan-allen-lee.jpg" alt="Seung Hwan (Allen) Lee">
           <h4>Seung Hwan (Allen) Lee</h4>
           <p class="person-role">Chemical Engineering · Enzymes</p>
-          <span class="badge">✓ Confirmed</span>
-          <div class="person-links">
-            <a href="https://sci-harbor.com/team" target="_blank" rel="noopener">SciHarbor team ↗</a>
-          </div>
         </div>
       </div>
-      <p class="pi-more">More domain experts across Chemistry, Chemical &amp; Aerospace Engineering, Civil Engineering, Physics, and Mechanical Engineering are being engaged through SciHarbor. <a href="https://sci-harbor.com/team" target="_blank" rel="noopener">See the full contributor team ↗</a></p>
+      <p class="pi-more">More domain experts across Chemistry, Chemical &amp; Aerospace Engineering, Civil Engineering, Physics, and Mechanical Engineering are joining the initiative across all three projects.</p>
     </div>
   </section>
 
@@ -543,7 +535,7 @@
   <footer>
     <div class="wrap">
       <span>AI4Science Scientific Workflow Data Collection · Minnesota NLP Lab, University of Minnesota</span>
-      <span><a href="https://dykang.github.io/project.html" target="_blank" rel="noopener">Project portfolio</a> · <a href="https://minnesotanlp.github.io" target="_blank" rel="noopener">Minnesota NLP</a> · PI: Dongyeop Kang</span>
+      <span><a href="https://minnesotanlp.github.io" target="_blank" rel="noopener">Minnesota NLP</a> · PI: Dongyeop Kang</span>
     </div>
   </footer>
 
