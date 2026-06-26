@@ -216,6 +216,11 @@
   .projects-grid .flow { grid-template-columns: 1fr; gap: 12px; }
   .projects-grid .stepc { min-height: 0; }
   .projects-grid .proj-foot { margin-top: auto; padding-top: 6px; }
+  /* Align each card's blocks row-by-row across the three columns (desktop only) */
+  @media (min-width: 1081px) {
+    .projects-grid { grid-template-rows: repeat(8, auto); column-gap: 24px; row-gap: 0; }
+    .project { display: grid; grid-template-rows: subgrid; grid-row: 1 / -1; align-items: start; }
+  }
 
   /* ---------- Responsive ---------- */
   @media (max-width: 1080px) {
