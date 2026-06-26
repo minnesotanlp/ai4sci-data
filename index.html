@@ -189,8 +189,7 @@
   /* ---------- Team & contributors ---------- */
   .team-sub { font-family: var(--serif); font-size: 19px; font-weight: 600; margin: 30px 0 16px; color: var(--brown); }
   .team-sub .confirmed-note { color: var(--mute); font-style: italic; font-weight: 400; font-size: 16px; }
-  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-  .pi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .team-grid, .pi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
   .person { padding: 6px 8px; text-align: center; display: flex; flex-direction: column; align-items: center; }
   .person .avatar { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; object-position: top; display: block; margin: 0 0 13px; border: 3px solid var(--card); box-shadow: 0 3px 12px -4px rgba(43,32,24,.35); background: var(--card); }
   .person .tag { margin-bottom: 9px; display: inline-block; }
@@ -226,13 +225,12 @@
     .spectrum { grid-template-columns: 1fr; }
     .flow { grid-template-columns: 1fr; }
     .roles { grid-template-columns: 1fr; }
-    .team-grid { grid-template-columns: 1fr 1fr; }
-    .pi-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+    .team-grid, .pi-grid { grid-template-columns: 1fr 1fr; }
     .hero-panel { padding: 32px 26px; }
     .involve { padding: 30px 24px; }
   }
   @media (max-width: 520px) {
-    .team-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+    .team-grid, .pi-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
   }
 </style>
 </head>
