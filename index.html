@@ -134,6 +134,7 @@
   .outcome .lbl { display: block; margin-bottom: 5px; }
   .outcome b { color: var(--espresso); font-weight: 600; }
   .phase2 { margin: 0 0 18px; font-size: 14.5px; font-style: italic; color: var(--mute); }
+  .outcome .phase2 { display: block; margin: 9px 0 0; }
 
   .comp {
     display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;
@@ -144,20 +145,119 @@
   .comp b { font-weight: 600; }
   .comp .sub { color: rgba(255,255,255,.85); font-size: 13.5px; font-style: italic; }
 
-  .related { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; margin: 0 0 20px; font-size: 15px; color: var(--brown); max-width: 88ch; }
-  .related .lbl { color: var(--accent); }
+  /* ---------- THIS project's own page (canonical, per project) ---------- */
+  .proj-page {
+    border: 1.5px solid var(--accent); border-radius: 12px; background: var(--card);
+    padding: 14px 16px 15px; margin: 0 0 20px;
+  }
+  .proj-page .lbl { display: block; margin-bottom: 8px; }
+  .proj-page .site { display: block; text-decoration: none; color: var(--espresso); }
+  .proj-page .site .name { font-family: var(--sans); font-weight: 700; font-size: 15px; }
+  .proj-page .site .url {
+    display: block; margin-top: 2px; font-family: var(--sans); font-size: 12.5px;
+    font-weight: 600; color: var(--accent); word-break: break-all;
+  }
+  .proj-page .site:hover .url { text-decoration: underline; }
+  .proj-page .blurb { margin: 9px 0 0; font-size: 14.5px; color: var(--mute); line-height: 1.5; }
+  .proj-page .sublinks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 11px; }
+  .proj-page .sublinks a {
+    font-family: var(--sans); font-size: 12.5px; font-weight: 600; text-decoration: none;
+    border: 1.5px solid var(--line); border-radius: 8px; padding: 5px 10px;
+    color: var(--espresso); background: var(--cream);
+  }
+  .proj-page .sublinks a:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---------- Related work (separate efforts — NOT this project's page) ---------- */
+  .related {
+    border-top: 1px dashed var(--line); padding-top: 15px; margin: 0 0 20px;
+    font-size: 14.5px; color: var(--brown); max-width: 88ch;
+  }
+  .related .lbl { display: block; color: var(--mute); margin-bottom: 3px; }
+  .related .rw-note { display: block; font-size: 12.5px; font-style: italic; color: var(--mute); margin-bottom: 9px; }
+  .related .rw-desc { display: block; margin-bottom: 10px; }
+  .related .rw-links { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 10px; }
   .related a {
     font-family: var(--sans); font-size: 13px; font-weight: 600; text-decoration: none;
     border: 1.5px solid var(--line); border-radius: 8px; padding: 6px 11px; color: var(--espresso); background: var(--card);
   }
   .related a:hover { border-color: var(--accent); color: var(--accent); }
-  .related .muted { color: var(--mute); font-style: italic; font-size: 13.5px; }
+  .related .muted { color: var(--mute); font-style: italic; font-size: 13px; }
+  /* project with no separate related work — keeps its grid row without drawing anything */
+  .related-none { border-top: 0; padding: 0; margin: 0; }
 
-  /* example video per project */
+  /* example / highlight media per project */
   .proj-media { margin: 0 0 22px; }
   .proj-media .lbl { display: block; margin-bottom: 8px; }
   .proj-media .frame { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #000; }
   .proj-media iframe, .proj-media video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+  .ai-pill {
+    display: inline-flex; align-items: center; gap: 6px; margin: 0 0 9px;
+    font-family: var(--sans); font-size: 11.5px; font-weight: 700; letter-spacing: .02em;
+    border: 1.5px solid var(--accent); color: var(--accent); background: var(--card);
+    border-radius: 999px; padding: 4px 11px;
+  }
+  .ai-pill svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; }
+  .media-src { margin: 7px 0 0; font-size: 12.5px; font-style: italic; color: var(--mute); }
+
+  /* ---------- SciHarbor: highlights lifted from sci-harbor.com ---------- */
+  .hl { border: 1px solid var(--line); border-radius: 12px; background: var(--card); overflow: hidden; }
+  .hl-quote { margin: 0; padding: 16px 18px; font-size: 17px; line-height: 1.45; color: var(--espresso); border-bottom: 1px solid var(--line); }
+  .hl-quote b { color: var(--accent); font-weight: 600; }
+  .hl-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
+  .hl-stats div { padding: 13px 6px 14px; text-align: center; border-right: 1px solid var(--line); }
+  .hl-stats div:last-child { border-right: 0; }
+  .hl-stats b { display: block; font-size: 24px; font-weight: 600; color: var(--accent); line-height: 1.1; }
+  .hl-stats span { font-family: var(--sans); font-size: 10.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--mute); }
+  .hl-task { padding: 15px 18px 16px; border-bottom: 1px solid var(--line); }
+  .hl-kicker { font-family: var(--sans); font-size: 10.5px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+  .hl-goal { margin: 6px 0 12px; font-size: 15.5px; font-weight: 600; line-height: 1.4; }
+  .hl-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .hl-steps li { display: flex; align-items: center; gap: 9px; font-size: 13.5px; color: var(--brown); }
+  .hl-steps i {
+    flex: none; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: #fff;
+    font-family: var(--sans); font-style: normal; font-size: 11px; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .hl-metrics { display: flex; flex-wrap: wrap; gap: 7px; padding: 14px 18px 15px; }
+  .hl-metrics span { font-size: 12.5px; color: var(--mute); border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px; background: var(--cream); }
+  .hl-metrics b { font-family: var(--sans); font-size: 12px; font-weight: 700; color: var(--accent); margin-right: 5px; }
+
+  /* ---------- Lab Workflows: live annotation hierarchy under the video ---------- */
+  .anno { margin-top: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); overflow: hidden; }
+  .anno-row { display: grid; grid-template-columns: 84px 1fr; gap: 10px; align-items: baseline; padding: 9px 14px; border-bottom: 1px solid var(--line); }
+  .anno-row:last-child { border-bottom: 0; }
+  .anno-row .k { font-family: var(--sans); font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); }
+  .anno-row .v { font-size: 14px; color: var(--espresso); line-height: 1.4; }
+  .anno-row.cog .v { font-style: italic; color: var(--brown); }
+  .anno-bar { position: relative; height: 5px; background: var(--line); }
+  .anno-bar i { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--accent); display: block; }
+
+  /* ---------- SciFlow: compact interactive demo of SciFlowCollection ---------- */
+  .sfd { border: 1px solid var(--line); border-radius: 12px; background: var(--card); overflow: hidden; }
+  .sfd-bar { display: flex; align-items: center; gap: 7px; padding: 9px 13px; border-bottom: 1px solid var(--line); background: var(--cream); }
+  .sfd-bar em { width: 9px; height: 9px; border-radius: 50%; background: var(--line); display: block; }
+  .sfd-bar .ttl { margin-left: 6px; font-family: var(--sans); font-size: 12px; font-weight: 700; color: var(--mute); }
+  .sfd-tabs { display: flex; flex-wrap: wrap; gap: 6px; padding: 11px 13px 0; }
+  .sfd-tabs button {
+    font-family: var(--sans); font-size: 12px; font-weight: 600; cursor: pointer;
+    border: 1.5px solid var(--line); border-radius: 8px; padding: 5px 10px;
+    color: var(--brown); background: var(--cream);
+  }
+  .sfd-tabs button[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .sfd-panel { padding: 13px; }
+  .sfd-panel[hidden] { display: none; }
+  .sfd-h { font-family: var(--sans); font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--mute); margin: 0 0 8px; }
+  .sfd-heat { display: grid; grid-template-columns: 62px 1fr; gap: 5px 9px; align-items: center; }
+  .sfd-heat .nm { font-family: var(--sans); font-size: 11px; font-weight: 600; color: var(--brown); }
+  .sfd-heat .cells { display: grid; grid-template-columns: repeat(42, 1fr); gap: 2px; }
+  .sfd-heat .cells i { display: block; aspect-ratio: 1; border-radius: 2px; }
+  .sfd-axis { display: flex; justify-content: space-between; margin: 7px 0 0 71px; font-family: var(--sans); font-size: 10px; color: var(--mute); }
+  .sfd-feed { list-style: none; margin: 12px 0 0; padding: 11px 0 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; }
+  .sfd-feed li { display: grid; grid-template-columns: 8px 1fr; gap: 9px; align-items: baseline; }
+  .sfd-feed i { width: 8px; height: 8px; border-radius: 50%; display: block; }
+  .sfd-feed .t { font-size: 13px; color: var(--espresso); }
+  .sfd-feed .s { display: block; font-family: var(--sans); font-size: 11px; color: var(--mute); margin-top: 1px; }
+  .sfd-note { margin: 11px 0 0; font-size: 12px; font-style: italic; color: var(--mute); }
 
   .proj-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
   .contact-inline { margin: 0; font-size: 15px; }
@@ -218,7 +318,7 @@
   .projects-grid .proj-foot { margin-top: auto; padding-top: 6px; }
   /* Align each card's blocks row-by-row across the three columns (desktop only) */
   @media (min-width: 1081px) {
-    .projects-grid { grid-template-rows: repeat(8, auto); column-gap: 24px; row-gap: 0; }
+    .projects-grid { grid-template-rows: repeat(9, auto); column-gap: 24px; row-gap: 0; }
     .project { display: grid; grid-template-rows: subgrid; grid-row: 1 / -1; align-items: start; }
   }
 
@@ -294,7 +394,7 @@
         <div class="seg">
           <div class="bar" style="background:var(--sky)"></div>
           <div class="h">Long · longitudinal</div>
-          <div class="s">6–12 month full research projects → <a href="#research-workflow">ResearchWorkflow</a></div>
+          <div class="s">6–12 month full research projects → <a href="#sciflow">SciFlow</a></div>
         </div>
       </div>
     </div>
@@ -337,15 +437,59 @@
           </div>
         </div>
         <div class="comp"><span class="lbl">Co-authorship</span><b>All participants are invited as co-authors</b></div>
-        <p class="outcome"><span class="lbl">Produces</span>SciHarbor — a benchmark evaluating AI agents on real simulators (OpenFOAM, GROMACS, AlphaFold, Ansys, SAP2000, OpenRocket…). <b>300+ tasks</b> in Phase 1, MIT-licensed, with an open leaderboard.</p>
-        <div class="related"><span class="lbl">Related work</span><span>Follows the Terminal-Bench style of agentic benchmark and live leaderboard.</span><a href="https://www.tbench.ai/" target="_blank" rel="noopener">Terminal-Bench ↗</a></div>
-        <p class="phase2">Phase 2 extends to physical workflows once robotic arms are installed.</p>
-        <div class="proj-foot">
-          <p class="contact-inline">Contact: <a href="mailto:passing2961@gmail.com?subject=SciHarbor%20%E2%80%94%20interested">Young-Jun Lee ↗</a></p>
-          <div class="links">
-            <a href="https://sci-harbor.com" target="_blank" rel="noopener">Project site ↗</a>
+        <p class="outcome"><span class="lbl">Produces</span>SciHarbor — a benchmark evaluating AI agents on real simulators (OpenFOAM, GROMACS, AlphaFold, Ansys, SAP2000, OpenRocket…). <b>300+ tasks</b> in Phase 1, MIT-licensed, with an open leaderboard.<span class="phase2">Phase 2 extends to physical workflows once robotic arms are installed.</span></p>
+
+        <div class="proj-page">
+          <span class="lbl">This project's page</span>
+          <a class="site" href="https://sci-harbor.com/" target="_blank" rel="noopener">
+            <span class="name">SciHarbor — University of Scientific Workflow (USW) ↗</span>
+            <span class="url">sci-harbor.com</span>
+          </a>
+          <p class="blurb">The live benchmark site: browse tasks and simulations, read the methodology, check the leaderboard, or submit a workflow from your own lab.</p>
+          <div class="sublinks">
+            <a href="https://sci-harbor.com/tasks" target="_blank" rel="noopener">Tasks ↗</a>
+            <a href="https://sci-harbor.com/leaderboard" target="_blank" rel="noopener">Leaderboard ↗</a>
+            <a href="https://sci-harbor.com/methodology" target="_blank" rel="noopener">Methodology ↗</a>
+            <a href="https://sci-harbor.com/submit" target="_blank" rel="noopener">Submit a task ↗</a>
             <a href="https://sci-harbor.com/team" target="_blank" rel="noopener">Team ↗</a>
           </div>
+        </div>
+
+        <div class="proj-media">
+          <span class="lbl">Highlights from the project page</span>
+          <div class="hl">
+            <p class="hl-quote">“The benchmark for agents that <b>run the experiment</b> — not just propose it.”</p>
+            <div class="hl-stats">
+              <div><b>18+</b><span>Tasks</span></div>
+              <div><b>10</b><span>Domains</span></div>
+              <div><b>25+</b><span>Simulations</span></div>
+              <div><b>9</b><span>Depts</span></div>
+            </div>
+            <div class="hl-task">
+              <span class="hl-kicker">Flagship task · Protein engineering</span>
+              <p class="hl-goal">Evolve an HACS enzyme with record activity toward formaldehyde</p>
+              <ol class="hl-steps">
+                <li><i>1</i>Sampling process</li>
+                <li><i>2</i>Fitness-function prediction</li>
+                <li><i>3</i>In silico screening</li>
+                <li><i>4</i>Experimental validation</li>
+                <li><i>5</i>Next active-learning round</li>
+              </ol>
+            </div>
+            <div class="hl-metrics">
+              <span><b>SAR</b>Step Achievement Ratio</span>
+              <span><b>TCS</b>Task Completion Score</span>
+              <span><b>WFS</b>Workflow Score</span>
+            </div>
+          </div>
+          <p class="media-src">Every task is drawn from a Nature-family paper and broken into atomic, individually verifiable steps. Source: <a href="https://sci-harbor.com/" target="_blank" rel="noopener">sci-harbor.com</a>.</p>
+        </div>
+
+        <!-- no separate related work for SciHarbor; placeholder keeps the three cards row-aligned -->
+        <div class="related related-none" aria-hidden="true"></div>
+
+        <div class="proj-foot">
+          <p class="contact-inline">Contact: <a href="mailto:passing2961@gmail.com?subject=SciHarbor%20%E2%80%94%20interested">Young-Jun Lee ↗</a></p>
         </div>
       </article>
 
@@ -377,29 +521,60 @@
         </div>
         <div class="comp"><span class="lbl">Compensation</span><b>$150 per participant</b><span class="sub">up to $50 / hr · co-authorship for contributing labs</span></div>
         <p class="outcome"><span class="lbl">Produces</span>A dataset of hands-on lab workflows for benchmarking how well AI connects actions to scientific goals and intentions.</p>
-        <div class="related"><span class="lbl">Related work</span><span>Builds on SERUM, which extracts behavioral models from egocentric lab video.</span><a href="https://minnesotanlp.github.io/user_aware_ai_web/" target="_blank" rel="noopener">User-Aware AI ↗</a><a href="https://minnesotanlp.github.io/SERUM-web/" target="_blank" rel="noopener">SERUM project ↗</a><a href="https://amir-fluviomarine-nia.ngrok-free.dev/" target="_blank" rel="noopener">Live demo ↗</a><span class="muted">paper under review</span></div>
-        <div class="proj-media">
-          <span class="lbl">Example</span>
-          <div class="frame"><video controls preload="metadata" playsinline><source src="assets/videos/lab_workflows.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
-        </div>
-        <div class="proj-foot">
-          <p class="contact-inline">Contact: <a href="mailto:dento019@umn.edu?subject=Lab%20Workflows%20study%20%E2%80%94%20interested">Karin de Langis ↗</a></p>
-          <div class="links">
-            <a href="https://minnesotanlp.github.io/user_aware_ai_web/" target="_blank" rel="noopener">Project site ↗</a>
+
+        <div class="proj-page">
+          <span class="lbl">This project's page</span>
+          <a class="site" href="https://minnesotanlp.github.io/user_aware_ai_web/" target="_blank" rel="noopener">
+            <span class="name">User-Aware AI ↗</span>
+            <span class="url">minnesotanlp.github.io/user_aware_ai_web</span>
+          </a>
+          <p class="blurb">The study's own site: the annotation pipeline, the full worked example, the recruitment FAQ, and the team.</p>
+          <div class="sublinks">
+            <a href="https://minnesotanlp.github.io/user_aware_ai_web/#example" target="_blank" rel="noopener">Worked example ↗</a>
+            <a href="https://minnesotanlp.github.io/user_aware_ai_web/#annotation" target="_blank" rel="noopener">Annotation ↗</a>
             <a href="https://minnesotanlp.github.io/user_aware_ai_web/#recruitment" target="_blank" rel="noopener">Participate ↗</a>
           </div>
         </div>
+
+        <div class="proj-media">
+          <span class="lbl">Example · from the project page</span>
+          <span class="ai-pill"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/></svg>Example annotations generated by Claude</span>
+          <div class="frame"><video id="lw-video" controls preload="metadata" playsinline><source src="assets/videos/lab_workflows.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
+          <div class="anno" id="lw-anno">
+            <div class="anno-bar"><i id="lw-progress"></i></div>
+            <div class="anno-row"><span class="k">Action</span><span class="v" data-lw="action">Arrange cartridge, buffers, pipettes</span></div>
+            <div class="anno-row"><span class="k">Subtask</span><span class="v" data-lw="subtask">Set up the GELFREE workstation</span></div>
+            <div class="anno-row"><span class="k">Goal</span><span class="v" data-lw="goal">Load the sample cleanly so bands stay sharp</span></div>
+            <div class="anno-row cog"><span class="k">Cognitive</span><span class="v" data-lw="cognitive">Order-of-use layout prevents mid-run mistakes</span></div>
+          </div>
+          <p class="media-src">Press play — fine-grained <b>actions</b> roll up into <b>subtasks</b>, which serve the session's <b>goals</b>, under the participant's <b>cognitive state</b>. Source video: GELFREE 8100 protein fractionation.</p>
+        </div>
+
+        <div class="related">
+          <span class="lbl">Related work</span>
+          <span class="rw-note">Separate efforts — not this project's page.</span>
+          <span class="rw-desc">Builds on SERUM, which extracts behavioral models from egocentric lab video.</span>
+          <div class="rw-links">
+            <a href="https://minnesotanlp.github.io/SERUM-web/" target="_blank" rel="noopener">SERUM project ↗</a>
+            <a href="https://amir-fluviomarine-nia.ngrok-free.dev/" target="_blank" rel="noopener">SERUM live demo ↗</a>
+            <span class="muted">paper under review</span>
+          </div>
+        </div>
+
+        <div class="proj-foot">
+          <p class="contact-inline">Contact: <a href="mailto:dento019@umn.edu?subject=Lab%20Workflows%20study%20%E2%80%94%20interested">Karin de Langis ↗</a></p>
+        </div>
       </article>
 
-      <!-- ---------- ResearchWorkflow (Chi) ---------- -->
-      <article class="project" id="research-workflow" style="--accent: var(--sky)">
+      <!-- ---------- SciFlow (Chi) ---------- -->
+      <article class="project" id="sciflow" style="--accent: var(--sky)">
         <div class="proj-head">
           <div class="tags"><span class="tag">Long-horizon</span><span class="tag">Longitudinal</span><span class="tag">Digital</span></div>
-          <h2>ResearchWorkflow</h2>
+          <h2>SciFlow</h2>
           <p class="proj-lead">Lead: <b>Khanh Chi Le</b> · <span class="horizon">6–12 months</span></p>
-          <p class="proj-pitch">If you are running a long-term project in digital tools, let us record how it unfolds from inception to publication.</p>
+          <p class="proj-pitch">If you are running a long-term project in digital tools, let us record how it unfolds from inception to publication — tracking research trajectories in real time.</p>
         </div>
-        <p class="collect"><span class="lbl">What we collect</span>Keystrokes, screen video, meeting notes, and documents — gathered passively as you work.</p>
+        <p class="collect"><span class="lbl">What we collect</span>Activity from the tools where research actually happens — Overleaf, GitHub, Slack, Google Drive, Claude Code, and approved screen recordings — aligned into one project timeline.</p>
         <div class="flow">
           <div class="stepc">
             <div class="ic"><svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg"><path d="M54 12 30 12C27.8 12 26 13.8 26 16L26 80C26 82.2 27.8 84 30 84L72 84C74.2 84 76 82.2 76 80L76 34 54 34ZM58 14.5 73.5 30 58 30ZM68 66 34 66 34 62 68 62ZM68 54 34 54 34 50 68 50ZM68 42 34 42 34 38 50 38 50 42Z"/><path d="M20 24 16 24C13.8 24 12 25.8 12 28L12 84C12 86.2 13.8 88 16 88L62 88C64.2 88 66 86.2 66 84L20 84Z" opacity="0.55"/></svg></div>
@@ -419,13 +594,93 @@
         </div>
         <div class="comp"><span class="lbl">Compensation</span><b>$150 per team / 4 months</b><span class="sub">up to $600 total</span></div>
         <p class="outcome"><span class="lbl">Produces</span>A longitudinal dataset of how research unfolds — to study how early actions shape later ones, and to build better AI research assistants.</p>
-        <div class="related"><span class="lbl">Related work</span><span>Builds on ScholaWrite, a keystroke dataset of scientific writing.</span><a href="https://minnesotanlp.github.io/scholawrite/" target="_blank" rel="noopener">ScholaWrite project ↗</a><a href="https://arxiv.org/abs/2502.02904v4" target="_blank" rel="noopener">Paper ↗</a></div>
-        <div class="proj-media">
-          <span class="lbl">Example</span>
-          <div class="frame"><video controls preload="metadata" playsinline><source src="assets/videos/project2_with_intents.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
+
+        <div class="proj-page">
+          <span class="lbl">This project's page</span>
+          <a class="site" href="https://minnesotanlp.github.io/sciflow/" target="_blank" rel="noopener">
+            <span class="name">SciFlow ↗</span>
+            <span class="url">minnesotanlp.github.io/sciflow</span>
+          </a>
+          <p class="blurb">The study's own site: a full research project replayed as one timeline, the SciFlowCollection desktop app, recruitment details, and the team.</p>
+          <div class="sublinks">
+            <a href="https://minnesotanlp.github.io/sciflow/#example" target="_blank" rel="noopener">Project replay ↗</a>
+            <a href="https://minnesotanlp.github.io/sciflow/#tool" target="_blank" rel="noopener">The tool ↗</a>
+            <a href="https://minnesotanlp.github.io/sciflow/#recruitment" target="_blank" rel="noopener">Participate ↗</a>
+          </div>
         </div>
+
+        <div class="proj-media">
+          <span class="lbl">Example · from the project page</span>
+          <div class="frame"><video controls preload="metadata" playsinline><source src="assets/videos/project2_with_intents.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
+          <span class="ai-pill" style="margin:16px 0 9px"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/></svg>Interactive demo · synthetic data</span>
+          <div class="sfd" id="sfd">
+            <div class="sfd-bar"><em></em><em></em><em></em><span class="ttl">SciFlowCollection</span></div>
+            <div class="sfd-tabs" role="tablist" aria-label="SciFlowCollection demo">
+              <button role="tab" aria-selected="true" data-sfd="overview">Overview</button>
+              <button role="tab" aria-selected="false" data-sfd="recording">Recording</button>
+              <button role="tab" aria-selected="false" data-sfd="github">GitHub</button>
+              <button role="tab" aria-selected="false" data-sfd="drive">Drive</button>
+            </div>
+
+            <div class="sfd-panel" data-sfd-panel="overview">
+              <p class="sfd-h">Activity across your connected tools · last 6 weeks</p>
+              <div class="sfd-heat" id="sfd-heat"></div>
+              <div class="sfd-axis"><span>Jun 4</span><span>Jun 18</span><span>Jul 2</span><span>Jul 16</span></div>
+              <ul class="sfd-feed">
+                <li><i style="background:rgb(52,168,83)"></i><span class="t">analysis-plan edited<span class="s">Demo Participant · Jul 16, 07:49 AM</span></span></li>
+                <li><i style="background:rgb(244,132,37)"></i><span class="t">Recorded 3 min (Entire Screen)<span class="s">Jul 16, 06:24 AM</span></span></li>
+                <li><i style="background:rgb(224,30,90)"></i><span class="t">message in #demo-project<span class="s">Demo Advisor · Jul 16, 02:00 AM</span></span></li>
+                <li><i style="background:rgb(139,92,246)"></i><span class="t">push to demo-research-pipeline<span class="s">demo-participant · Jul 15, 04:12 PM</span></span></li>
+              </ul>
+            </div>
+
+            <div class="sfd-panel" data-sfd-panel="recording" hidden>
+              <p class="sfd-h">Recorded sessions</p>
+              <ul class="sfd-feed" style="margin-top:0;padding-top:0;border-top:0">
+                <li><i style="background:rgb(244,132,37)"></i><span class="t">Entire Screen · 2:41<span class="s">Jul 16, 6:24 AM</span></span></li>
+                <li><i style="background:rgb(244,132,37)"></i><span class="t">2 windows · 0:03<span class="s">Jul 16, 6:20 AM</span></span></li>
+                <li><i style="background:rgb(244,132,37)"></i><span class="t">Entire Screen · 47:12<span class="s">Jul 14, 9:15 AM</span></span></li>
+              </ul>
+              <p class="sfd-h" style="margin:14px 0 8px">Upcoming — started from your calendar</p>
+              <ul class="sfd-feed" style="margin-top:0;padding-top:0;border-top:0">
+                <li><i style="background:var(--line)"></i><span class="t">SW: analysis sprint<span class="s">Jul 17, 7:45 AM</span></span></li>
+                <li><i style="background:var(--line)"></i><span class="t">SW: writing session<span class="s">Jul 20, 9:15 AM</span></span></li>
+              </ul>
+            </div>
+
+            <div class="sfd-panel" data-sfd-panel="github" hidden>
+              <p class="sfd-h">Repository activity</p>
+              <ul class="sfd-feed" style="margin-top:0;padding-top:0;border-top:0">
+                <li><i style="background:rgb(139,92,246)"></i><span class="t">push to demo-research-pipeline<span class="s">3 commits · add validation checks before scaling up</span></span></li>
+                <li><i style="background:rgb(139,92,246)"></i><span class="t">PR #28: on-screen recording border<span class="s">demo-participant · Jul 13, 10:21 AM</span></span></li>
+                <li><i style="background:rgb(139,92,246)"></i><span class="t">push to feat/drive-tracking<span class="s">2 commits · wire Drive feed into the overview heatmap</span></span></li>
+              </ul>
+            </div>
+
+            <div class="sfd-panel" data-sfd-panel="drive" hidden>
+              <p class="sfd-h">Document revisions</p>
+              <ul class="sfd-feed" style="margin-top:0;padding-top:0;border-top:0">
+                <li><i style="background:rgb(52,168,83)"></i><span class="t">analysis-plan was edited<span class="s">+ pilot results: two conditions look separable<br>+ next: add validation checks before scaling</span></span></li>
+                <li><i style="background:rgb(52,168,83)"></i><span class="t">Notes — Weekly Check-In edited<span class="s">Demo Participant · Jul 14, 09:53 PM</span></span></li>
+                <li><i style="background:rgb(76,154,255)"></i><span class="t">edited main.tex on Overleaf<span class="s">Demo Participant · Jul 15, 11:24 AM</span></span></li>
+              </ul>
+            </div>
+          </div>
+          <p class="sfd-note">Everything shown is synthetic demo data. You choose exactly which folders, channels, repositories, and screens are shared — anything you don't approve is never collected. Full demo on the <a href="https://minnesotanlp.github.io/sciflow/#tool" target="_blank" rel="noopener">project page</a>.</p>
+        </div>
+
+        <div class="related">
+          <span class="lbl">Related work</span>
+          <span class="rw-note">Separate efforts — not this project's page.</span>
+          <span class="rw-desc">Builds on ScholaWrite, a keystroke dataset of scientific writing.</span>
+          <div class="rw-links">
+            <a href="https://minnesotanlp.github.io/scholawrite/" target="_blank" rel="noopener">ScholaWrite project ↗</a>
+            <a href="https://arxiv.org/abs/2502.02904v4" target="_blank" rel="noopener">Paper ↗</a>
+          </div>
+        </div>
+
         <div class="proj-foot">
-          <p class="contact-inline">Contact: <a href="mailto:le000422@umn.edu?subject=ResearchWorkflow%20study%20%E2%80%94%20interested">Khanh Chi Le ↗</a></p>
+          <p class="contact-inline">Contact: <a href="mailto:le000422@umn.edu?subject=SciFlow%20study%20%E2%80%94%20interested">Khanh Chi Le ↗</a></p>
         </div>
       </article>
 
@@ -497,11 +752,12 @@
         </div>
         <div class="person" style="--accent: var(--sky)">
           <img class="avatar" src="https://minnesotanlp.github.io/img/members/ChiLe.jpg" alt="Khanh Chi Le">
-          <span class="tag">ResearchWorkflow</span>
+          <span class="tag">SciFlow</span>
           <h4>Khanh Chi Le</h4>
           <p class="person-role">Longitudinal research process</p>
           <div class="person-links">
-            <a href="mailto:le000422@umn.edu?subject=ResearchWorkflow%20study%20%E2%80%94%20interested">Email</a>
+            <a href="mailto:le000422@umn.edu?subject=SciFlow%20study%20%E2%80%94%20interested">Email</a>
+            <a href="https://minnesotanlp.github.io/sciflow/" target="_blank" rel="noopener">Site ↗</a>
           </div>
         </div>
         <div class="person" style="--accent: var(--brown)">
@@ -550,6 +806,126 @@
       <span><a href="https://minnesotanlp.github.io" target="_blank" rel="noopener">Minnesota NLP</a> · PI: Dongyeop Kang</span>
     </div>
   </footer>
+
+<script>
+(function () {
+  /* ---- Lab Workflows: hierarchical annotations, time-aligned to the video ----
+     Annotation data mirrors the worked example on the User-Aware AI project page
+     (GELFREE 8100 protein fractionation). Times in seconds. */
+  var DURATION = 480;
+  var TRACKS = {
+    action: [
+      [0, 40, "Arrange cartridge, buffers, pipettes"],
+      [40, 70, "Label the collection tubes"],
+      [70, 100, "Aspirate 30 µL of sample"],
+      [100, 130, "Dispense into the loading chamber"],
+      [130, 150, "Inspect wells for bubbles"],
+      [150, 182, "Open the running-buffer bottle"],
+      [182, 235, "Fill the anode reservoir to the line"],
+      [235, 275, "Select Method 7 on the panel"],
+      [275, 312, "Confirm 85 V, 13 steps"],
+      [312, 360, "Press Start"],
+      [360, 396, "Watch the dye front reach the chamber"],
+      [396, 425, "Check the current is stable"],
+      [425, 456, "Withdraw fractions into tubes"],
+      [456, 480, "Order tubes by migration"]
+    ],
+    subtask: [
+      [0, 70, "Set up the GELFREE workstation"],
+      [70, 150, "Load the protein sample"],
+      [150, 235, "Prime with running buffer"],
+      [235, 360, "Configure & launch the run"],
+      [360, 425, "Monitor fraction migration"],
+      [425, 480, "Harvest & label fractions"]
+    ],
+    goal: [
+      [0, 235, "Load the sample cleanly so bands stay sharp"],
+      [235, 480, "Separate & collect fractions by molecular weight"]
+    ],
+    cognitive: [
+      [0, 70, "Order-of-use layout prevents mid-run mistakes"],
+      [70, 150, "Bubble-free, even loading keeps bands sharp"],
+      [150, 235, "Buffer level sets the current path"],
+      [235, 360, "Method must match the sample's MW range"],
+      [360, 425, "Larger proteins lag — timing follows size"],
+      [425, 480, "Label in migration order to keep the size map"]
+    ]
+  };
+
+  var video = document.getElementById("lw-video");
+  var progress = document.getElementById("lw-progress");
+  if (video && progress) {
+    var slots = {};
+    Object.keys(TRACKS).forEach(function (k) {
+      slots[k] = document.querySelector('[data-lw="' + k + '"]');
+    });
+    var labelAt = function (segs, t) {
+      for (var i = 0; i < segs.length; i++) {
+        if (t >= segs[i][0] && t < segs[i][1]) return segs[i][2];
+      }
+      return segs[segs.length - 1][2];
+    };
+    video.addEventListener("timeupdate", function () {
+      var t = video.currentTime;
+      progress.style.width = Math.min(100, (t / (video.duration || DURATION)) * 100) + "%";
+      Object.keys(TRACKS).forEach(function (k) {
+        var next = labelAt(TRACKS[k], t);
+        if (slots[k] && slots[k].textContent !== next) slots[k].textContent = next;
+      });
+    });
+  }
+
+  /* ---- SciFlow: tab switching in the SciFlowCollection demo ---- */
+  var demo = document.getElementById("sfd");
+  if (demo) {
+    demo.querySelectorAll("[data-sfd]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var key = btn.getAttribute("data-sfd");
+        demo.querySelectorAll("[data-sfd]").forEach(function (b) {
+          b.setAttribute("aria-selected", String(b === btn));
+        });
+        demo.querySelectorAll("[data-sfd-panel]").forEach(function (p) {
+          p.hidden = p.getAttribute("data-sfd-panel") !== key;
+        });
+      });
+    });
+
+    /* Deterministic synthetic heatmap — same generator as the project page. */
+    var heat = document.getElementById("sfd-heat");
+    var STREAMS = [
+      ["Drive", "52, 168, 83"],
+      ["GitHub", "139, 92, 246"],
+      ["Slack", "224, 30, 90"],
+      ["Overleaf", "76, 154, 255"],
+      ["Recording", "244, 132, 37"]
+    ];
+    var ALPHA = [0.07, 0.3, 0.6, 1];
+    STREAMS.forEach(function (s, si) {
+      var seed = si * 31 + 7;
+      var rnd = function () {
+        seed |= 0; seed = (seed + 0x6d2b79f5) | 0;
+        var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+      var name = document.createElement("span");
+      name.className = "nm";
+      name.textContent = s[0];
+      var cells = document.createElement("span");
+      cells.className = "cells";
+      for (var d = 0; d < 42; d++) {
+        var v = rnd();
+        var lvl = v < 0.42 ? 0 : v < 0.68 ? 1 : v < 0.9 ? 2 : 3;
+        var cell = document.createElement("i");
+        cell.style.background = "rgba(" + s[1] + ", " + ALPHA[lvl] + ")";
+        cells.appendChild(cell);
+      }
+      heat.appendChild(name);
+      heat.appendChild(cells);
+    });
+  }
+})();
+</script>
 
 </body>
 </html>
